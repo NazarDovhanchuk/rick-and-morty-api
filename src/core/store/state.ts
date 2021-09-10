@@ -2,4 +2,6 @@ import { CharactersListState } from '../features/components/CharactersList/chara
 
 export interface AppState {
   charactersReducer: CharactersListState;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  charactersPage: any
 }

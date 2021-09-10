@@ -1,21 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import CharactersList from './core/features/components/CharactersList/CharactersList';
+import Pagination from './core/features/components/Pagination/Pagination';
+import CustomInput from './core/features/shared/CustomInput/CustomInput';
 
-import InputSearch from './core/shared/InputSearch/InputSearch';
-import { AppState } from './core/store/state';
+const App = (): JSX.Element =>
+// const [heroSearch, setHeroSearch] = useState('');
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const App: React.FC = () => {
-  const characters = useSelector((state: AppState) => state.charactersReducer.charasters);
-  // eslint-disable-next-line no-console
-  console.log(characters);
+// const handlerSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
+//   setHeroSearch({ heroSearch: e.target.value });
 
-  return (
+//   // eslint-disable-next-line no-console
+//   console.log(e.target.value);
+// };
+
+  // eslint-disable-next-line implicit-arrow-linebreak
+  (
     <>
-      <InputSearch />
-      <CharactersList charasters={characters} />
+      <CustomInput
+        type="text"
+        placeholder="Find your hero"
+      />
+      <Pagination />
+      <CharactersList />
     </>
   );
-};
 export default App;
