@@ -2,13 +2,14 @@ import React from 'react';
 
 import CharactersList from './core/features/components/CharactersList/CharactersList';
 import Pagination from './core/features/components/Pagination/Pagination';
+import { setSeacrh } from './core/features/shared/CustomInput/custom.input.actions';
 import CustomInput from './core/features/shared/CustomInput/CustomInput';
 
 const App = (): JSX.Element => (
   <>
     <CustomInput
-      type="text"
       placeholder="Find your hero"
+      action={setSeacrh}
     />
     <Pagination />
     <CharactersList />

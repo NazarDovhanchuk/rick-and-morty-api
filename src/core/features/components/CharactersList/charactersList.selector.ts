@@ -5,3 +5,5 @@ export const getPage = (state: AppState): AppState => state.charactersPage;
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const getCharactersList = (state: AppState) => state.charactersReducer.charasters;
+
+export const getSearch = (state: AppState): AppState => state.charactersSearch;
