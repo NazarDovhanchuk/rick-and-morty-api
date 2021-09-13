@@ -8,7 +8,7 @@ const initial: CharactersListState = {
   charasters: [],
 };
 
-const allCharacters = (state = initial, action: CharactersActions): CharactersListState => {
+export const loadDefault = (state = initial, action: CharactersActions): CharactersListState => {
   switch (action.type) {
     case CharactersAllTypes.LOAD_SUCCESS:
       return {
@@ -20,4 +20,16 @@ const allCharacters = (state = initial, action: CharactersActions): CharactersLi
   }
 };
 
-export default allCharacters;
+export const allCharacters = (state = initial, action: CharactersActions): CharactersListState => {
+  switch (action.type) {
+    case CharactersAllTypes.LOAD_SUCCESS:
+      return {
+        charasters: [...action.payload],
+      };
+
+    default:
+      return state;
+  }
+};
+
+// eslint-disable-next-line max-len

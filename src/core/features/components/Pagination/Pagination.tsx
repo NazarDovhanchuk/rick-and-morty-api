@@ -8,6 +8,8 @@ const Pagination = (): JSX.Element => {
   const dispatch = useDispatch();
 
   const toPrevPage = (): void => {
+    if (page === 1) return;
+
     dispatch(setPage(page - 1));
   };
 
