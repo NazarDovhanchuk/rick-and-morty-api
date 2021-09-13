@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-export enum CharactersActionsTypes {
+export enum CharactersAllTypes {
   LOAD_SUCCESS = 'CHARACTERS_LOAD_SUCCESS',
   LOAD_DEFAULT = 'LOAD_DEFAULT',
 }
@@ -12,7 +12,7 @@ export interface Characters {
 }
 
 export const setCharacters = (hero: any): Characters => ({
-  type: CharactersActionsTypes.LOAD_SUCCESS,
+  type: CharactersAllTypes.LOAD_SUCCESS,
   payload: hero,
 });
 

@@ -1,10 +1,10 @@
-import { CharactersPageTypes, CharactersPageActions } from './pagination.actions';
+import { CharactersPaginationsTypes, CharactersPaginationsActions } from './pagination.actions';
 
 const initial = 1;
 
-const paginationReducer = (state = initial, action: CharactersPageActions): number => {
+const paginationReducer = (state = initial, action: CharactersPaginationsActions): number => {
   switch (action.type) {
-    case CharactersPageTypes.PAGE:
+    case CharactersPaginationsTypes.PAGE:
       return action.payload;
 
     default:

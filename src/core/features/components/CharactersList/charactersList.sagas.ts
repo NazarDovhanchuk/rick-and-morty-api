@@ -5,7 +5,7 @@ import {
 } from 'redux-saga/effects';
 
 import { setCharacters } from './charactersList.actions';
-import { CharactersPageTypes } from '../Pagination/pagination.actions';
+import { CharactersPaginationsTypes } from '../Pagination/pagination.actions';
 
 import { getAllCharacters } from '../../../api/api';
 import { getPage } from './charactersList.selector';
@@ -17,5 +17,5 @@ export function* charactersLoad(): SagaIterator {
 }
 
 export function* watchCharactersLoad(): SagaIterator {
-  yield takeEvery(CharactersPageTypes.PAGE, charactersLoad);
+  yield takeEvery(CharactersPaginationsTypes.PAGE, charactersLoad);
 }

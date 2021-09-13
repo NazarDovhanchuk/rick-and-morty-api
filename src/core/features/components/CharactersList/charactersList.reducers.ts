@@ -1,6 +1,6 @@
 import {
   CharactersActions,
-  CharactersActionsTypes,
+  CharactersAllTypes,
 } from './charactersList.actions';
 import { CharactersListState } from './charactersList.state';
 
@@ -10,7 +10,7 @@ const initial: CharactersListState = {
 
 const allCharacters = (state = initial, action: CharactersActions): CharactersListState => {
   switch (action.type) {
-    case CharactersActionsTypes.LOAD_SUCCESS:
+    case CharactersAllTypes.LOAD_SUCCESS:
       return {
         charasters: [...action.payload],
       };
