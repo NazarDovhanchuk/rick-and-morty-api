@@ -1,10 +1,9 @@
-import { all, fork } from 'redux-saga/effects';
+import { fork, all } from 'redux-saga/effects';
 
-import charactersLoad from '../features/components/CharactersList/charactersList.sagas';
-import setPage from '../features/components/Pagination/pagination.sagas';
+import { watchCharactersLoad } from '../features/components/CharactersList/charactersList.sagas';
 
 function* rootSaga(): Generator {
-  yield all([fork(charactersLoad), fork(setPage)]);
+  yield all([fork(watchCharactersLoad)]);
 }
 
 export default rootSaga;

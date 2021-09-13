@@ -10,9 +10,9 @@ const initial: CharactersListState = {
 
 const allCharacters = (state = initial, action: CharactersActions): CharactersListState => {
   switch (action.type) {
-    case CharactersActionsTypes.LOAD_DEFAULT:
+    case CharactersActionsTypes.LOAD_SUCCESS:
       return {
-        charasters: [...state.charasters, ...action.payload],
+        charasters: [...action.payload],
       };
 
     default:

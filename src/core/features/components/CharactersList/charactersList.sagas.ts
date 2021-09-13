@@ -1,13 +1,21 @@
 import { SagaIterator } from 'redux-saga';
 
-import { call, put } from 'redux-saga/effects';
+import {
+  call, put, select, takeEvery,
+} from 'redux-saga/effects';
 
-import { CharactersActionsTypes } from './charactersList.actions';
+import { setCharacters } from './charactersList.actions';
+import { CharactersPageTypes } from '../Pagination/pagination.actions';
+
 import { getAllCharacters } from '../../../api/api';
+import { getPage } from './charactersList.selector';
 
-function* charactersLoad(): SagaIterator {
-  const data = yield call(getAllCharacters);
-  yield put({ type: CharactersActionsTypes.LOAD_DEFAULT, payload: data.results });
+export function* charactersLoad(): SagaIterator {
+  const page = yield select(getPage);
+  const data = yield call(getAllCharacters, page);
+  yield put(setCharacters(data.results));
 }
 
-export default charactersLoad;
+export function* watchCharactersLoad(): SagaIterator {
+  yield takeEvery(CharactersPageTypes.PAGE, charactersLoad);
+}

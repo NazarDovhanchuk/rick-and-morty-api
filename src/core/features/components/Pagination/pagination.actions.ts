@@ -1,15 +1,15 @@
-export enum CharactersActionsTypes {
+export enum CharactersPageTypes {
   PAGE = 'CHARACTERS_PAGE',
 }
 
 export interface SetPage {
-  type: CharactersActionsTypes.PAGE;
+  type: CharactersPageTypes.PAGE;
   payload: number
 }
 
 export const setPage = (page: number): SetPage => ({
-  type: CharactersActionsTypes.PAGE,
+  type: CharactersPageTypes.PAGE,
   payload: page,
 });
 
-export type CharactersActions = SetPage;
+export type CharactersPageActions = SetPage;
