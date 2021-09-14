@@ -5,12 +5,7 @@ import {
 } from 'redux-saga/effects';
 
 import { CharactersAllTypes, getCharacters, setCharacters } from './charactersList.actions';
-import { getAllCharacters, getCharactersAPI } from '../../../api/api';
-
-export function* loadDefault(): SagaIterator {
-  const data = yield call(getAllCharacters);
-  yield put({ type: CharactersAllTypes.LOAD_SUCCESS, payload: data.results });
-}
+import { getCharactersAPI } from '../../../api/api';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function* getCharactersSaga({ payload }: ReturnType<typeof getCharacters>): SagaIterator {

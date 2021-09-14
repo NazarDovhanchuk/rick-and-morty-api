@@ -4,7 +4,8 @@ import axios, { AxiosResponse } from 'axios';
 interface ApiInterface {
   page: number,
   name?: string,
-  status?: string
+  status?: string,
+  gender?: string
 }
 
 export const getAllCharacters = async (page?: ApiInterface) => axios

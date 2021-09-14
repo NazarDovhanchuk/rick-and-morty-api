@@ -12,6 +12,7 @@ interface CharactersParameters {
   page: number;
   name?: string;
   status?: string;
+  gender?: string;
 }
 
 export interface GetCharacters {

@@ -6,15 +6,19 @@ import { getCharacters } from '../../components/CharactersList/charactersList.ac
 interface InputProps {
   // eslint-disable-next-line react/require-default-props
   placeholder?: string;
+  status: string;
+  gender: string;
 }
 
-const CustomInput: React.FC<InputProps> = ({ placeholder }) => {
+const CustomInput: React.FC<InputProps> = ({ placeholder, status, gender }) => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
 
   const handlerOnSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(getCharacters({ page: 1, name: search }));
+    dispatch(getCharacters({
+      page: 1, name: search, status, gender,
+    }));
 
     setSearch('');
   };
