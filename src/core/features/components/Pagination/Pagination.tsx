@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../../../store/state';
+import { getCharacters } from '../CharactersList/charactersList.actions';
 import { setPage } from './pagination.actions';
 
 const Pagination = (): JSX.Element => {
@@ -11,10 +12,12 @@ const Pagination = (): JSX.Element => {
     if (page === 1) return;
 
     dispatch(setPage(page - 1));
+    dispatch(getCharacters({ page: page - 1 }));
   };
 
   const toNextPage = (): void => {
     dispatch(setPage(page + 1));
+    dispatch(getCharacters({ page: page + 1 }));
   };
 
   return (

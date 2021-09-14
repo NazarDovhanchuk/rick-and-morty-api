@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import CharactersList from './core/features/components/CharactersList/CharactersList';
 import Pagination from './core/features/components/Pagination/Pagination';
-import { setSeacrh } from './core/features/shared/CustomInput/custom.input.actions';
 import CustomInput from './core/features/shared/CustomInput/CustomInput';
+import CustomSelect from './core/features/shared/CustomSelect/CustomSelect';
 
-const App = (): JSX.Element => (
-  <>
-    <CustomInput
-      placeholder="Find your hero"
-      action={setSeacrh}
-    />
-    <Pagination />
-    <CharactersList />
-  </>
-);
+const statuses = [
+  { id: 1, value: 'Alive' }, { id: 2, value: 'Dead' }, { id: 3, value: 'unknown' },
+];
+
+const App = (): JSX.Element => {
+  const [characterStatus, setCharacterStatus] = useState('');
+
+  const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>):void => {
+    setCharacterStatus(e.target.value);
+  };
+
+  return (
+    <>
+      <CustomInput
+        placeholder="Find your hero"
+      />
+      <CustomSelect name="characterStatus" value={characterStatus} handleChange={handleStatusChange} items={statuses} />
+      <Pagination />
+      <CharactersList status={characterStatus} />
+    </>
+  );
+};
 
 // const [heroSearch, setHeroSearch] = useState('');
 

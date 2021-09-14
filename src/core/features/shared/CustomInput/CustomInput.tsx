@@ -1,23 +1,20 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setPage } from '../../components/Pagination/pagination.actions';
+import { getCharacters } from '../../components/CharactersList/charactersList.actions';
 
 interface InputProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  action: any
   // eslint-disable-next-line react/require-default-props
   placeholder?: string;
 }
 
-const CustomInput: React.FC<InputProps> = ({ action, placeholder }) => {
+const CustomInput: React.FC<InputProps> = ({ placeholder }) => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
 
-  const handlerOnSubmit = (e: { preventDefault: () => void; }) => {
+  const handlerOnSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(setPage(1));
-    dispatch(action(search));
+    dispatch(getCharacters({ page: 1, name: search }));
 
     setSearch('');
   };
@@ -27,10 +24,9 @@ const CustomInput: React.FC<InputProps> = ({ action, placeholder }) => {
   };
 
   return (
-    <>
+    <form onSubmit={handlerOnSubmit}>
       <input placeholder={placeholder} value={search} onChange={handlerOnChange} />
-      <button onClick={handlerOnSubmit}>Search</button>
-    </>
+    </form>
   );
 };
 
