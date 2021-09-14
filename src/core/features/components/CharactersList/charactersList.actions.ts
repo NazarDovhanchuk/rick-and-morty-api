@@ -6,6 +6,7 @@ import { CharactersItem } from './charactersList.state';
 export enum CharactersAllTypes {
   LOAD_SUCCESS = 'CHARACTERS_LOAD_SUCCESS',
   LOAD_CHARACTER = 'LOAD_CHARACTER',
+  SET_LENGTH = 'SET_LENGTH',
 }
 
 interface CharactersParameters {
@@ -25,6 +26,11 @@ export interface Characters {
   payload: CharactersItem[];
 }
 
+export interface CharactersLength {
+  type: CharactersAllTypes;
+  payload: number
+}
+
 export const setCharacters = (hero: CharactersItem[]): Characters => ({
   type: CharactersAllTypes.LOAD_SUCCESS,
   payload: hero,
@@ -33,6 +39,11 @@ export const setCharacters = (hero: CharactersItem[]): Characters => ({
 export const getCharacters = (payload: CharactersParameters): GetCharacters => ({
   type: CharactersAllTypes.LOAD_CHARACTER,
   payload,
+});
+
+export const setLength = (length: number): CharactersLength => ({
+  type: CharactersAllTypes.SET_LENGTH,
+  payload: length,
 });
 
 export type CharactersActions = Characters;

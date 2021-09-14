@@ -19,13 +19,14 @@ const CharactersList: React.FC<CharactersListProps> = ({ status }) => {
   }, []);
 
   return (
-    <div className="charachers__list">
+    <div className="charachers">
       {characters.map((person) => (
         <CharactersItem
           key={person.id}
           name={person.name}
           species={person.species}
           image={person.image}
+          stat={person.status}
         />
       ))}
     </div>

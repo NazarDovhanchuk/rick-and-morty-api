@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 import React from 'react';
 
+import './style.scss';
+
 interface CustomSelectProps {
   items: {
     id: number;
@@ -14,7 +16,7 @@ interface CustomSelectProps {
 const CustomSelect: React.FunctionComponent<CustomSelectProps> = ({
   items, value, name, handleChange,
 }) => (
-  <select name={name} onChange={handleChange} value={value}>
+  <select className="custom__select" name={name} onChange={handleChange} value={value}>
     {items.map((item) => <option key={item.id} selected={item.value === value} value={item.value}>{item.value}</option>)}
   </select>
 );

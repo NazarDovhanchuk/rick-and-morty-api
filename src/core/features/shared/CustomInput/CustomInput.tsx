@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCharacters } from '../../components/CharactersList/charactersList.actions';
 
+import './style.scss';
+
 interface InputProps {
   // eslint-disable-next-line react/require-default-props
   placeholder?: string;
@@ -28,8 +30,8 @@ const CustomInput: React.FC<InputProps> = ({ placeholder, status, gender }) => {
   };
 
   return (
-    <form onSubmit={handlerOnSubmit}>
-      <input placeholder={placeholder} value={search} onChange={handlerOnChange} />
+    <form className="form" onSubmit={handlerOnSubmit}>
+      <input className="form__input" placeholder={placeholder} value={search} onChange={handlerOnChange} />
     </form>
   );
 };

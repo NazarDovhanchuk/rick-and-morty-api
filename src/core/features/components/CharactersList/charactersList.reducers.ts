@@ -19,3 +19,13 @@ export const allCharacters = (state = initial, action: CharactersActions): Chara
       return state;
   }
 };
+
+export const setLength = (state = 1, action: CharactersActions): number => {
+  switch (action.type) {
+    case CharactersAllTypes.SET_LENGTH:
+      return action.payload.length;
+
+    default:
+      return state;
+  }
+};

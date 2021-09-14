@@ -1,3 +1,5 @@
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 
 import CharactersList from './core/features/components/CharactersList/CharactersList';
@@ -24,7 +26,6 @@ const App = (): JSX.Element => {
   const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>):void => {
     setGender(e.target.value);
   };
-
   return (
     <>
       <CustomInput
@@ -39,15 +40,4 @@ const App = (): JSX.Element => {
     </>
   );
 };
-
-// const [heroSearch, setHeroSearch] = useState('');
-
-// const handlerSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
-//   setHeroSearch({ heroSearch: e.target.value });
-
-//   // eslint-disable-next-line no-console
-//   console.log(e.target.value);
-// };
-
-// eslint-disable-next-line implicit-arrow-linebreak
 export default App;
