@@ -1,6 +1,7 @@
 import {
   CharactersActions,
   CharactersAllTypes,
+  CharactersLength,
 } from './charactersList.actions';
 import { CharactersListState } from './charactersList.state';
 
@@ -20,10 +21,10 @@ export const allCharacters = (state = initial, action: CharactersActions): Chara
   }
 };
 
-export const setLength = (state = 1, action: CharactersActions): number => {
+export const setLength = (state = 1, action: CharactersLength): number => {
   switch (action.type) {
     case CharactersAllTypes.SET_LENGTH:
-      return action.payload.length;
+      return action.payload;
 
     default:
       return state;
