@@ -10,7 +10,6 @@ const Pagination = (): JSX.Element => {
   const page = useSelector((state: AppState) => state.charactersPage);
   const pageLength = useSelector((state: AppState) => state.charactersLength);
   const dispatch = useDispatch();
-  console.log(pageLength);
 
   const getPageLength = (num: number): number[] => {
     const arr = [];

@@ -8,14 +8,6 @@ interface ApiInterface {
   gender?: string
 }
 
-export const getAllCharacters = async (page?: ApiInterface) => axios
-  .get(`https://rickandmortyapi.com/api/character/?page=${page}`)
-  .then(({ data }) => data);
-
-export const getSingleCharacters = async (name: ApiInterface, page: ApiInterface) => axios
-  .get(`https://rickandmortyapi.com/api/character/?page=${page}&name=${name}`)
-  .then(({ data }) => data);
-
 export const getCharactersAPI = async (parameters: ApiInterface): Promise<AxiosResponse> => {
   const preparedParams = Object.entries(parameters).map(([key, value]) => `${key}=${value}`).join('&');
 
