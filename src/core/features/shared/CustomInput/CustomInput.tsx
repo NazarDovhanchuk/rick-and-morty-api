@@ -7,12 +7,13 @@ interface InputProps {
   placeholder: string;
   handlerChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   searchValue: string;
+  className: string,
 }
 
 const CustomInput: React.FC<InputProps> = ({
-  placeholder, handlerChange, searchValue,
+  placeholder, handlerChange, searchValue, className,
 }) => (
-  <input className="input" placeholder={placeholder} value={searchValue} onChange={handlerChange} />
+  <input className={`input ${className}`} placeholder={placeholder} value={searchValue} onChange={handlerChange} />
 );
 
 export default CustomInput;

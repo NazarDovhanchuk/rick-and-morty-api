@@ -4,11 +4,12 @@ import './style.scss';
 
 interface FormProps {
   handlerSubmit: (e: React.ChangeEvent<HTMLFormElement>) => void;
+  className: string,
 }
 
-const CustomForm: React.FC<FormProps> = ({ handlerSubmit, children }) => (
+const CustomForm: React.FC<FormProps> = ({ handlerSubmit, children, className }) => (
   <>
-    <form className="form" onSubmit={handlerSubmit}>
+    <form className={className} onSubmit={handlerSubmit}>
       {children}
     </form>
   </>

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './style.scss';
 
 interface CharacterItemProps {
@@ -23,6 +24,7 @@ const CharactersItem: React.FC<CharacterItemProps> = ({
         {stat}
       </p>
     </div>
+
   </div>
 );
 

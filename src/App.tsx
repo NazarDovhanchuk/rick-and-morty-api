@@ -46,27 +46,30 @@ const App = (): JSX.Element => {
 
   return (
     <>
-      <CustomForm handlerSubmit={handlerOnSubmit}>
+      <CustomForm handlerSubmit={handlerOnSubmit} className="form">
         <CustomInput
           placeholder="Find your hero"
           searchValue={search}
           handlerChange={handlerOnChange}
+          className="characters__input"
         />
         <CustomSelect
           name="characterStatus"
           value={characterStatus}
           handleChange={handleStatusChange}
           items={statuses}
+          className="custom__select"
         />
         <CustomSelect
           name="characterGender"
           value={gender}
           handleChange={handleGenderChange}
           items={genders}
+          className="custom__select"
         />
       </CustomForm>
-      <CharactersList status={characterStatus} />
       <Pagination />
+      <CharactersList status={characterStatus} />
     </>
   );
 };
