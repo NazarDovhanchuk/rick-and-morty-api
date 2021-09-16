@@ -28,6 +28,7 @@ const CharactersList: React.FC<CharactersListProps> = ({ status }) => {
           image={person.image}
           stat={person.status}
           location={person.location}
+          id={person.id}
         />
       ))}
     </div>

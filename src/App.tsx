@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import { getCharacters } from './core/features/components/CharactersList/charactersList.actions';
 
 import CharactersList from './core/features/components/CharactersList/CharactersList';
 import Pagination from './core/features/components/Pagination/Pagination';
 import CustomForm from './core/features/shared/CustomForm/CustomForm';
-// import CustomInput from './core/features/shared/CustomInput/CustomInput';
 import CustomSelect from './core/features/shared/CustomSelect/CustomSelect';
 import CustomInput from './core/features/shared/CustomInput/CustomInput';
+import CharactersPage from './core/features/components/CharactersPage/CharactersPage';
 
 const statuses = [
   { id: 1, value: 'Alive' }, { id: 2, value: 'Dead' }, { id: 3, value: 'unknown' },
@@ -46,31 +48,39 @@ const App = (): JSX.Element => {
 
   return (
     <>
-      <CustomForm handlerSubmit={handlerOnSubmit} className="form">
-        <CustomInput
-          placeholder="Find your hero"
-          searchValue={search}
-          handlerChange={handlerOnChange}
-          className="characters__input"
-        />
-        <CustomSelect
-          name="characterStatus"
-          value={characterStatus}
-          handleChange={handleStatusChange}
-          items={statuses}
-          className="custom__select"
-        />
-        <CustomSelect
-          name="characterGender"
-          value={gender}
-          handleChange={handleGenderChange}
-          items={genders}
-          className="custom__select"
-        />
-      </CustomForm>
-      <Pagination />
-      <CharactersList status={characterStatus} />
+      <Router>
+        <Switch>
+          <Route path="/">
+            <CustomForm handlerSubmit={handlerOnSubmit} className="form">
+              <CustomInput
+                placeholder="Find your hero"
+                searchValue={search}
+                handlerChange={handlerOnChange}
+                className="characters__input"
+              />
+              <CustomSelect
+                name="characterStatus"
+                value={characterStatus}
+                handleChange={handleStatusChange}
+                items={statuses}
+                className="custom__select"
+              />
+              <CustomSelect
+                name="characterGender"
+                value={gender}
+                handleChange={handleGenderChange}
+                items={genders}
+                className="custom__select"
+              />
+            </CustomForm>
+            <Pagination />
+            <CharactersList status={characterStatus} />
+          </Route>
+          <Route path="/:id" component={CharactersPage} />
+        </Switch>
+      </Router>
     </>
+
   );
 };
 

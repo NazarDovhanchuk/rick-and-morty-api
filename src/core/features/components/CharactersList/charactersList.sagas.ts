@@ -13,6 +13,8 @@ function* getCharactersSaga({ payload }: ReturnType<typeof getCharacters>): Saga
   const data = yield call(getCharactersAPI, payload);
   yield put(setCharacters(data.results));
   yield put(setLength(data.info.pages));
+
+  console.log(payload);
 }
 
 export function* charactersWatcher():SagaIterator {

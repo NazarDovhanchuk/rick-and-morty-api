@@ -5,7 +5,8 @@ interface ApiInterface {
   page: number,
   name?: string,
   status?: string,
-  gender?: string
+  id?: number,
+  gender?: string,
 }
 
 export const getCharactersAPI = async (parameters: ApiInterface): Promise<AxiosResponse> => {

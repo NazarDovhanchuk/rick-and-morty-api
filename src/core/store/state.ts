@@ -6,4 +6,5 @@ export interface AppState {
   charactersPage: any,
   charactersSearch: any;
   charactersLength: any;
+  charactersDetails: any;
 }
