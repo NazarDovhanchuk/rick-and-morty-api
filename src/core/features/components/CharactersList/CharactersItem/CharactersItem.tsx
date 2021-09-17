@@ -25,7 +25,7 @@ const CharactersItem: React.FC<CharacterItemProps> = ({
       <img src={image} alt="Characters" className="characters__image" />
       <div className="characters__information">
         <Link to={{
-          pathname: `/${id}`,
+          pathname: `/details${id}`,
         }}
         >
           <h3 className="characters__name">{name}</h3>

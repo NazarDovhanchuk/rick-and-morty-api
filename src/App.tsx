@@ -78,7 +78,7 @@ const App = (): JSX.Element => {
             <Pagination />
             <CharactersList status={characterStatus} />
           </Route>
-          <Route path="/:id" component={CharactersPage} />
+          <Route path="/details:id" component={CharactersPage} />
         </Switch>
       </Router>
     </>
