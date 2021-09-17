@@ -78,7 +78,7 @@ const App = (): JSX.Element => {
             <Pagination />
             <CharactersList status={characterStatus} />
           </Route>
-          <Route path="/page:id">
+          <Route path="/page/:id">
             <CustomForm handlerSubmit={handlerOnSubmit} className="form">
               <CustomInput
                 placeholder="Find your hero"
@@ -104,7 +104,7 @@ const App = (): JSX.Element => {
             <Pagination />
             <CharactersList status={characterStatus} />
           </Route>
-          <Route path="/details:id" component={CharactersPage} />
+          <Route path="/details/:id" component={CharactersPage} />
         </Switch>
       </Router>
     </>
