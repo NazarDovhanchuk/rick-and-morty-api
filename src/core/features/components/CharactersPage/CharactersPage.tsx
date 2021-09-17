@@ -27,7 +27,7 @@ const CharactersPage: React.FC<CharactersPageProps> = () => {
   }, []);
 
   return (
-    <div>
+    <div className="details">
       <img src={details.image} alt="Characters" />
       <div>
         <h3>{details.name}</h3>
