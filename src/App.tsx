@@ -52,7 +52,33 @@ const App = (): JSX.Element => {
     <>
       <Router>
         <Switch>
-          <Route path="/" exact>
+          <Route exact path="/">
+            <CustomForm handlerSubmit={handlerOnSubmit} className="form">
+              <CustomInput
+                placeholder="Find your hero"
+                searchValue={search}
+                handlerChange={handlerOnChange}
+                className="characters__input"
+              />
+              <CustomSelect
+                name="characterStatus"
+                value={characterStatus}
+                handleChange={handleStatusChange}
+                items={statuses}
+                className="custom__select"
+              />
+              <CustomSelect
+                name="characterGender"
+                value={gender}
+                handleChange={handleGenderChange}
+                items={genders}
+                className="custom__select"
+              />
+            </CustomForm>
+            <Pagination />
+            <CharactersList status={characterStatus} />
+          </Route>
+          <Route path="/:id">
             <CustomForm handlerSubmit={handlerOnSubmit} className="form">
               <CustomInput
                 placeholder="Find your hero"
