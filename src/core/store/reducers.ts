@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { allCharacters, setLength } from '../features/components/CharactersList/charactersList.reducers';
+import { charactersDetails, charactersID } from '../features/components/CharactersPage/charactersPage.reducer';
 import paginationReducer from '../features/components/Pagination/pagination.reducer';
 import searchReducer from '../features/shared/CustomInput/custom.input.reducer';
 
@@ -9,6 +10,8 @@ const rootReducer = combineReducers({
   charactersPage: paginationReducer,
   charactersSearch: searchReducer,
   charactersLength: setLength,
+  charactersID,
+  charactersDetails,
 });
 
 export default rootReducer;

@@ -12,6 +12,8 @@ const Pagination = (): JSX.Element => {
   const page = useSelector((state: AppState) => state.charactersPage);
   const dispatch = useDispatch();
 
+  console.log(page);
+
   const toPrevPage = (): void => {
     if (page === 1) return;
 

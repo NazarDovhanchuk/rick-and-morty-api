@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { CharactersListState } from '../features/components/CharactersList/charactersList.state';
+import { CharactersItem, CharactersListState } from '../features/components/CharactersList/charactersList.state';
 
 export interface AppState {
   charactersReducer: CharactersListState;
+  charactersDetails: CharactersItem;
   charactersPage: any,
   charactersSearch: any;
   charactersLength: any;
-  charactersDetails: any;
 }

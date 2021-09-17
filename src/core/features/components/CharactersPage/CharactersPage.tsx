@@ -1,10 +1,43 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
+import { AppState } from '../../../store/state';
+import { setID } from './charactersPage.actions';
 
-const CharactersPage = (): JSX.Element => (
-  <div>
-    <p />
-    <ul />
-  </div>
-);
+interface CharactersPageProps {
+  id: number,
+  name: string;
+  species: string;
+  image: string;
+  type: string,
+  gender: string,
+
+}
+
+const CharactersPage: React.FC<CharactersPageProps> = () => {
+  const { id }:any = useParams();
+  const details = useSelector((state: AppState) => state.charactersDetails);
+  const dispatch = useDispatch();
+
+  console.log(details);
+
+  useEffect(() => {
+    dispatch(setID(id));
+  }, []);
+
+  return (
+    <div>
+      <img src={details.image} alt="Characters" />
+      <div>
+        <h3>{details.name}</h3>
+        <p>
+          {details.species}
+        </p>
+        <div />
+      </div>
+    </div>
+  );
+};
 
 export default CharactersPage;

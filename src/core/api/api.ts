@@ -16,3 +16,5 @@ export const getCharactersAPI = async (parameters: ApiInterface): Promise<AxiosR
     .get(`https://rickandmortyapi.com/api/character/?${preparedParams}`)
     .then(({ data }) => data);
 };
+
+export const getCharactersByID = async (id: ApiInterface): Promise<AxiosResponse> => axios.get(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => data);

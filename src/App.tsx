@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, Switch,
+} from 'react-router-dom';
 
 import { getCharacters } from './core/features/components/CharactersList/charactersList.actions';
 
@@ -50,7 +52,7 @@ const App = (): JSX.Element => {
     <>
       <Router>
         <Switch>
-          <Route path="/">
+          <Route path="/" exact>
             <CustomForm handlerSubmit={handlerOnSubmit} className="form">
               <CustomInput
                 placeholder="Find your hero"
