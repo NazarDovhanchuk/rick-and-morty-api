@@ -10,9 +10,9 @@ import { getCharacters } from '../CharactersList/charactersList.actions';
 import './style.scss';
 
 const Pagination = (): JSX.Element => {
-  const { id = 1 }: any = useParams();
+  const { id = '1' }: { id: string } = useParams();
 
-  const pageLength = useSelector((state: AppState) => state.charactersLength);
+  const totalPage = useSelector((state: AppState) => state.charactersLength);
   const dispatch = useDispatch();
 
   const pageArr = (num: number) => {
@@ -24,23 +24,23 @@ const Pagination = (): JSX.Element => {
     return arr;
   };
 
+  const getPageArr = pageArr(totalPage);
+
   const toPrevPage = (): string => {
     const prevPage = Math.max(1, +id - 1);
 
-    return prevPage;
+    return `/page/${prevPage}`;
   };
 
   const toNextPage = (): string => {
-    const nextPage = id + 1;
+    const nextPage = Math.min(totalPage, +id + 1);
 
-    return nextPage;
+    return `/page/${nextPage}`;
   };
-
-  const getPageArr = pageArr(pageLength);
 
   useEffect(() => {
     dispatch(getCharacters({ page: +id }));
-  });
+  }, []);
 
   return (
     <div className="pagination">
