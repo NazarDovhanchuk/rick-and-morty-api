@@ -24,9 +24,11 @@ const CharactersItem: React.FC<CharacterItemProps> = ({
     <div className="characters__item">
       <img src={image} alt="Characters" className="characters__image" />
       <div className="characters__information">
-        <Link to={{
-          pathname: `/details/${id}`,
-        }}
+        <Link
+          to={{
+            pathname: `/details/${id}`,
+          }}
+          style={{ textDecoration: 'none' }}
         >
           <h3 className="characters__name">{name}</h3>
         </Link>
