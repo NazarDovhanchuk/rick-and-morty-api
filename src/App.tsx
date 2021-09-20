@@ -75,8 +75,8 @@ const App = (): JSX.Element => {
                 className="custom__select"
               />
             </CustomForm>
-            <Pagination />
             <CharactersList status={characterStatus} />
+            <Pagination />
           </Route>
           <Route path="/page/:id">
             <CustomForm handlerSubmit={handlerOnSubmit} className="form">
@@ -101,8 +101,8 @@ const App = (): JSX.Element => {
                 className="custom__select"
               />
             </CustomForm>
-            <Pagination />
             <CharactersList status={characterStatus} />
+            <Pagination />
           </Route>
           <Route path="/details/:id" component={CharactersPage} />
         </Switch>

@@ -14,7 +14,7 @@ import './style.scss';
 
 const Pagination = (): JSX.Element => {
   const { id = '1' }: { id: string } = useParams();
-  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(4);
+  const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
   const totalPage = useSelector((state: AppState) => state.charactersLength);
@@ -35,11 +35,20 @@ const Pagination = (): JSX.Element => {
   const toPrevPage = (): string => {
     const prevPage = Math.max(1, +id - 1);
 
+    if (+id + 3 <= maxPageNumberLimit) {
+      setMaxPageNumberLimit(maxPageNumberLimit - 1);
+      setMinPageNumberLimit(minPageNumberLimit - 1);
+      console.log('hello');
+    }
+
+    console.log(id, maxPageNumberLimit);
+
     return `/page/${prevPage}`;
   };
 
   const toNextPage = (): string => {
     const nextPage = Math.min(totalPage, +id + 1);
+
     if (nextPage + 1 > maxPageNumberLimit) {
       setMaxPageNumberLimit(maxPageNumberLimit + 1);
       setMinPageNumberLimit(minPageNumberLimit + 1);
@@ -48,29 +57,31 @@ const Pagination = (): JSX.Element => {
     return `/page/${nextPage}`;
   };
 
+  const pagination = getPageArr.map((index) => {
+    if (index < maxPageNumberLimit + 1 && index > minPageNumberLimit) {
+      return (
+        <Link
+          key={index}
+          to={{
+            pathname: `/page/${index}`,
+          }}
+        >
+          <p className={index === +id ? 'pagination__item--active' : 'pagination__item'}>{index}</p>
+        </Link>
+      );
+    }
+  });
+
   useEffect(() => {
     dispatch(getCharacters({ page: +id }));
-  }, [id]);
+  }, [pagination]);
 
   return (
     <div className="pagination">
-      <Link to={toPrevPage} onClick={toPrevPage}>
+      <Link to={toPrevPage}>
         <CustomButton handlerOnClick={toPrevPage} className="pagination__button" field="Prev page" />
       </Link>
-      {getPageArr.map((index) => {
-        if (index < maxPageNumberLimit + 1 && index > minPageNumberLimit) {
-          return (
-            <Link
-              key={index}
-              to={{
-                pathname: `/page/${index}`,
-              }}
-            >
-              <p className="pagination__item">{index}</p>
-            </Link>
-          );
-        }
-      })}
+      {pagination}
       <Link to={toNextPage}>
         <CustomButton handlerOnClick={toNextPage} className="pagination__button" field="Next page" />
       </Link>
