@@ -18,7 +18,6 @@
 
   &__item {
     color: black;
-    margin: 0;
     text-decoration: none !important;
     font-size: 20px;
 
@@ -28,7 +27,7 @@
 
     &--active {
       color: rgb(255, 152, 0);
-      margin: 0;
+
       text-decoration: none;
       font-size: 20px;
     }
