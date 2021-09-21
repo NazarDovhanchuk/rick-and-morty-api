@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
@@ -30,7 +31,7 @@ const App = (): JSX.Element => {
   const handlerOnSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     dispatch(getCharacters({
-      page: 1, name: search, gender,
+      page: 1, name: search, gender, status: characterStatus,
     }));
 
     setSearch('');
@@ -41,10 +42,12 @@ const App = (): JSX.Element => {
   };
 
   const handleStatusChange = (e: React.ChangeEvent<HTMLSelectElement>):void => {
+    console.log(e.target.value);
     setCharacterStatus(e.target.value);
   };
 
   const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>):void => {
+    console.log(e.target.value);
     setGender(e.target.value);
   };
 
@@ -76,7 +79,7 @@ const App = (): JSX.Element => {
               />
             </CustomForm>
             <Pagination />
-            <CharactersList status={characterStatus} />
+            <CharactersList status={characterStatus} gender={gender} />
           </Route>
           <Route path="/page/:id">
             <CustomForm handlerSubmit={handlerOnSubmit} className="form">
@@ -102,7 +105,7 @@ const App = (): JSX.Element => {
               />
             </CustomForm>
             <Pagination />
-            <CharactersList status={characterStatus} />
+            <CharactersList status={characterStatus} gender={gender} />
           </Route>
           <Route path="/details/:id" component={CharactersPage} />
         </Switch>

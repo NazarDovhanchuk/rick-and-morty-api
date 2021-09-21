@@ -18,17 +18,6 @@ const Pagination = (): JSX.Element => {
 
   const totalPage: number = useSelector((state: AppState) => state.charactersLength);
 
-  const pageArr = (num: number): number[] => {
-    const arr = [];
-    for (let i = 1; i <= num; i++) {
-      arr.push(i);
-    }
-
-    return arr;
-  };
-
-  const getPageArr = pageArr(totalPage);
-
   // page who we see
   const [activePage, setActivePage] = useState<number[]>([]);
 
@@ -77,7 +66,9 @@ const Pagination = (): JSX.Element => {
 
     setActivePage([...startPages, ...centerPages, ...endPages]);
 
-    dispatch(getCharacters({ page: +id }));
+    dispatch(getCharacters({
+      page: +id,
+    }));
   }, [id, totalPage]);
 
   return (

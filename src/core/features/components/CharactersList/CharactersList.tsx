@@ -8,14 +8,15 @@ import './style.scss';
 
 interface CharactersListProps {
   status: string;
+  gender: string;
 }
 
-const CharactersList: React.FC<CharactersListProps> = ({ status }) => {
+const CharactersList: React.FC<CharactersListProps> = ({ status, gender }) => {
   const characters = useSelector(getCharactersList);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCharacters({ page: 1, status }));
+    dispatch(getCharacters({ page: 1, gender, status }));
   }, []);
 
   return (
