@@ -1,8 +1,3 @@
-// function* getCharactersSaga({ payload }: ReturnType<typeof getCharacters>): SagaIterator {
-//   const data = yield call(getCharactersAPI, payload);
-//   yield put(setCharacters(data.results));
-//   yield put(setLength(data.info.pages));
-
 import { SagaIterator } from '@redux-saga/types';
 import {
   call, put, takeEvery,

@@ -2,7 +2,7 @@
 import axios, { AxiosResponse } from 'axios';
 
 interface ApiInterface {
-  page: number,
+  page?: number,
   name?: string,
   status?: string,
   id?: number,

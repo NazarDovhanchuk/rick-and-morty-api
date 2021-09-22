@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Link } from '@material-ui/core';
 import React, { useState } from 'react';
-import Loader from 'react-loader-spinner';
+
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import CustomButton from '../../shared/CustomButton/CustomButton';
@@ -27,9 +28,7 @@ const CharactersSearch = (): JSX.Element => {
 
   const handlerOnSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
-    dispatch(getCharacters({
-      page: 1, name: search || '', gender: gender || '', status: characterStatus || '',
-    }));
+
     history.push(`/search?name=${search}&gender=${gender}&status=${characterStatus}`);
     setSearch('');
   };
@@ -72,6 +71,7 @@ const CharactersSearch = (): JSX.Element => {
           />
 
           <CustomButton handlerOnClick={handlerOnSubmit} className="pagination__button" field="Search" />
+
         </CustomForm>
       </div>
     </>

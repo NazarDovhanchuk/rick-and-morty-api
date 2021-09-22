@@ -1,14 +1,33 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import Loader from 'react-loader-spinner';
+import { useDispatch, useSelector } from 'react-redux';
 import CharactersItem from './CharactersItem/CharactersItem';
+import { getCharacters } from './charactersList.actions';
 import { getCharactersList } from './charactersList.selector';
 
 import './style.scss';
 
 const CharactersList = (): JSX.Element => {
   const characters = useSelector(getCharactersList);
+  const [loading, setLoading] = useState(true);
 
+  setTimeout(() => {
+    setLoading(false);
+  }, 1000);
+
+  if (loading) {
+    return (
+      <div>
+        <Loader
+          type="Puff"
+          color="#00BFFF"
+          height={100}
+          width={100}
+        />
+      </div>
+    );
+  }
   return (
     <div className="charachers">
       {characters.map((person) => (

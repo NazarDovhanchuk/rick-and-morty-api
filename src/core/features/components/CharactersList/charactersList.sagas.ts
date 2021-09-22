@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { SagaIterator } from 'redux-saga';
 
 import {
@@ -11,6 +12,7 @@ import { getCharactersAPI } from '../../../api/api';
 
 function* getCharactersSaga({ payload }: ReturnType<typeof getCharacters>): SagaIterator {
   const data = yield call(getCharactersAPI, payload);
+
   yield put(setCharacters(data.results));
   yield put(setLength(data.info.pages));
 }

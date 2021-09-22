@@ -10,7 +10,7 @@ export enum CharactersAllTypes {
 }
 
 interface CharactersParameters {
-  page: number;
+  page?: number;
   id?: number,
   name?: string;
   status?: string;
