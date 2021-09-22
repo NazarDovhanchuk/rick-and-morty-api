@@ -20,8 +20,6 @@ const CharactersPage: React.FC<CharactersPageProps> = () => {
   const details = useSelector((state: AppState) => state.charactersDetails);
   const dispatch = useDispatch();
 
-  console.log(details);
-
   useEffect(() => {
     dispatch(setID(id));
   }, []);
