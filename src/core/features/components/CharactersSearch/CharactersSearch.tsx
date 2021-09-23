@@ -1,15 +1,15 @@
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Link } from '@material-ui/core';
 import React, { useState } from 'react';
-
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import CustomButton from '../../shared/CustomButton/CustomButton';
 import CustomForm from '../../shared/CustomForm/CustomForm';
 import CustomInput from '../../shared/CustomInput/CustomInput';
 import CustomSelect from '../../shared/CustomSelect/CustomSelect';
 import { getCharacters } from '../CharactersList/charactersList.actions';
+import { getCharactersList } from '../CharactersList/charactersList.selector';
+import { getSearch } from './charactersSearch.actions';
 
 const statuses = [
   { id: 1, value: 'Alive' }, { id: 2, value: 'Dead' }, { id: 3, value: 'unknown' },
@@ -30,6 +30,7 @@ const CharactersSearch = (): JSX.Element => {
     e.preventDefault();
 
     history.push(`/search?name=${search}&gender=${gender}&status=${characterStatus}`);
+
     setSearch('');
   };
 

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import CharactersItem from './CharactersItem/CharactersItem';
-import { getCharacters } from './charactersList.actions';
+import { getCharacters, setCharacters } from './charactersList.actions';
 import { getCharactersList } from './charactersList.selector';
 
 import './style.scss';
@@ -28,6 +28,7 @@ const CharactersList = (): JSX.Element => {
       </div>
     );
   }
+
   return (
     <div className="charachers">
       {characters.map((person) => (

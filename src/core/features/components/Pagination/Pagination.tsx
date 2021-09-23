@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { AppState } from '../../../store/state';
 import CustomButton from '../../shared/CustomButton/CustomButton';
-import { getCharacters } from '../CharactersList/charactersList.actions';
+import { getCharacters, setCharacters } from '../CharactersList/charactersList.actions';
 
 import './style.scss';
 
@@ -68,6 +68,9 @@ const Pagination = (): JSX.Element => {
 
     dispatch(getCharacters({
       page: +id,
+      name: '',
+      status: '',
+      gender: '',
     }));
   }, [id, totalPage]);
 
