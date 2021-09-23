@@ -1,16 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { SagaIterator } from 'redux-saga';
 
 import {
-  call, put, takeEvery,
+  call, delay, put, takeEvery,
 } from 'redux-saga/effects';
 import { getCharactersAPI } from '../../../api/api';
 import { CharactersSearch, getSearch, setSearch } from './charactersSearch.actions';
 
 function* getSearchSaga({ payload }: ReturnType<typeof getSearch>): SagaIterator {
   const data = yield call(getCharactersAPI, payload);
-
-  console.log(data);
-
+  yield delay(1000);
   yield put(setSearch(data.results));
 }
 

@@ -13,4 +13,5 @@ export type CharactersItem = {
 
 export interface CharactersListState {
   charasters: CharactersItem[];
+  loading: boolean,
 }

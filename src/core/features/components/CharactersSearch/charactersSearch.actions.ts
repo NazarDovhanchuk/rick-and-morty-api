@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { CharactersItem } from '../CharactersList/charactersList.state';
 
 export enum CharactersSearch {
@@ -18,7 +19,7 @@ export interface GetCharacters {
 }
 
 export interface SetCharacters {
-  type: CharactersSearch;
+  type: CharactersSearch
   payload: CharactersItem[];
 }
 

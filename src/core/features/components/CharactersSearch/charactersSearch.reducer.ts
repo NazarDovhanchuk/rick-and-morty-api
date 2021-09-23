@@ -6,6 +6,7 @@ import { CharactersSearchActions, CharactersSearch } from './charactersSearch.ac
 
 const initial: CharactersListState = {
   charasters: [],
+  loading: false,
 };
 
 export const searchCharacters = (state = initial, action: CharactersSearchActions): CharactersListState => {
@@ -13,6 +14,7 @@ export const searchCharacters = (state = initial, action: CharactersSearchAction
     case CharactersSearch.SET_SEARCH:
       return {
         charasters: [...action.payload],
+        loading: true,
       };
 
     default:

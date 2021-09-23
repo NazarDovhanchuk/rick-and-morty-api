@@ -5,6 +5,6 @@ export interface AppState {
   charactersReducer: CharactersListState;
   charactersDetails: CharactersItem;
   charactersPage: any,
-  charactersSearch: any;
+  charactersSearch: CharactersListState;
   charactersLength: any;
 }
