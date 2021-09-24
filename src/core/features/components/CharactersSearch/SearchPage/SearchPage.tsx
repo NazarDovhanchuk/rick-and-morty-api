@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -27,6 +28,7 @@ const SearchPage = ():JSX.Element => {
   const status = queryParams.get('status');
 
   const handlerOnClick = (): void => {
+    console.log(isLoading);
     setPage(page + 1);
   };
 
@@ -80,7 +82,11 @@ const SearchPage = ():JSX.Element => {
         </div>
       )}
 
-      <CustomButton handlerOnClick={handlerOnClick} className="show-more__button" field="Show More" />
+      <CustomButton
+        handlerOnClick={handlerOnClick}
+        className="show-more__button"
+        field="Show More"
+      />
 
     </>
   );

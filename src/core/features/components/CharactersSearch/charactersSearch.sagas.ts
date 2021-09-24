@@ -10,7 +10,7 @@ import { CharactersSearch, getSearch, setSearch } from './charactersSearch.actio
 function* getSearchSaga({ payload }: ReturnType<typeof getSearch>): SagaIterator {
   const data = yield call(getCharactersAPI, payload);
   yield delay(1000);
-  yield put(setSearch(data.results));
+  yield put(setSearch({ charasters: data.results, loading: true }));
 }
 
 export function* seacrhWatcher():SagaIterator {

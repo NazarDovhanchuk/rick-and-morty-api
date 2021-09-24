@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { CharactersItem } from '../CharactersList/charactersList.state';
+import { CharactersListState } from '../CharactersList/charactersList.state';
 
 export enum CharactersSearch {
   LOAD_SEARCH = 'CHARACTERS_LOAD_SEARCH',
@@ -20,7 +20,7 @@ export interface GetCharacters {
 
 export interface SetCharacters {
   type: CharactersSearch
-  payload: CharactersItem[];
+  payload: CharactersListState;
 }
 
 export const getSearch = (payload: SearchParameters): GetCharacters => ({
@@ -28,9 +28,9 @@ export const getSearch = (payload: SearchParameters): GetCharacters => ({
   payload,
 });
 
-export const setSearch = (hero: CharactersItem[]): SetCharacters => ({
+export const setSearch = ({ charasters, loading }: CharactersListState): SetCharacters => ({
   type: CharactersSearch.SET_SEARCH,
-  payload: hero,
+  payload: { charasters, loading },
 });
 
 export type CharactersSearchActions = SetCharacters;

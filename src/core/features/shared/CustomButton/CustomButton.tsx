@@ -6,7 +6,9 @@ interface ButtonProps {
   field: string,
 }
 
-const CustomButton: React.FC<ButtonProps> = ({ handlerOnClick, className, field }) => (
+const CustomButton: React.FC<ButtonProps> = ({
+  handlerOnClick, className, field,
+}) => (
   <button onClick={handlerOnClick} className={`button ${className}`}>{field}</button>
 );
 

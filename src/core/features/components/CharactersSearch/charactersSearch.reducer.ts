@@ -13,7 +13,7 @@ export const searchCharacters = (state = initial, action: CharactersSearchAction
   switch (action.type) {
     case CharactersSearch.SET_SEARCH:
       return {
-        charasters: [...action.payload],
+        charasters: [...action.payload.charasters],
         loading: true,
       };
 
