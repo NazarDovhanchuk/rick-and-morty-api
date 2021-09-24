@@ -9,6 +9,7 @@ import { Link, useParams } from 'react-router-dom';
 import { AppState } from '../../../store/state';
 import CustomButton from '../../shared/CustomButton/CustomButton';
 import { getCharacters, setCharacters } from '../CharactersList/charactersList.actions';
+import { getCharactersLength } from '../CharactersList/charactersList.selector';
 
 import './style.scss';
 
@@ -16,7 +17,7 @@ const Pagination = (): JSX.Element => {
   const { id = '1' }: { id: string } = useParams();
   const dispatch = useDispatch();
 
-  const totalPage: number = useSelector((state: AppState) => state.charactersLength);
+  const totalPage: number = useSelector(getCharactersLength);
 
   // page who we see
   const [activePage, setActivePage] = useState<number[]>([]);

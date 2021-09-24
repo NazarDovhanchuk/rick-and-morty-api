@@ -1,4 +1,4 @@
-.show-more__button {
+.button__show-more {
   display: block;
   width: 20%;
   margin: 0 auto;
@@ -9,6 +9,10 @@
 
     &:hover {
       border: 1px solid #ff9800;
+    }
+
+    &__disabled {
+      display: none;
     }
   }
 

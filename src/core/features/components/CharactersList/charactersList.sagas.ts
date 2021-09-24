@@ -2,13 +2,14 @@
 import { SagaIterator } from 'redux-saga';
 
 import {
-  call, put, takeEvery,
+  call, delay, put, takeEvery,
 } from 'redux-saga/effects';
 
 import {
   CharactersAllTypes, getCharacters, setCharacters, setLength,
 } from './charactersList.actions';
 import { getCharactersAPI } from '../../../api/api';
+import { toggleLoadMore } from '../CharactersSearch/charactersSearch.actions';
 
 function* getCharactersSaga({ payload }: ReturnType<typeof getCharacters>): SagaIterator {
   const data = yield call(getCharactersAPI, payload);

@@ -7,6 +7,7 @@ import Loader from 'react-loader-spinner';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CustomButton from '../../../shared/CustomButton/CustomButton';
+import { getCharactersLength } from '../../CharactersList/charactersList.selector';
 import { CharactersItem } from '../../CharactersList/charactersList.state';
 import { getSearch, toggleLoadMore } from '../charactersSearch.actions';
 import { getCharactersSearch, getLoadMore, getStatusLoad } from '../charactersSearch.selector';
@@ -17,8 +18,9 @@ const SearchPage = ():JSX.Element => {
   const characters = useSelector(getCharactersSearch);
   const isLoading = useSelector(getStatusLoad);
   const isLoadingMore = useSelector(getLoadMore);
-  const totalPage: number = useSelector((state: AppState) => state.charactersLength);
+  const totalPage: number = useSelector(getCharactersLength);
   const dispatch = useDispatch();
+
   const [loadedCharacters, setLoadedCharacters] = useState<CharactersItem[]>([]);
   const [page, setPage] = useState<number>(1);
 
@@ -26,12 +28,11 @@ const SearchPage = ():JSX.Element => {
   const queryParams = new URLSearchParams(window.location.search);
   const name = queryParams.get('name');
   const gender = queryParams.get('gender');
-
-  console.log(isLoadingMore);
-
   const status = queryParams.get('status');
+  console.log(totalPage);
 
   const handlerOnClick = (): void => {
+    if (page === totalPage) return;
     dispatch(toggleLoadMore(true));
 
     setPage(page + 1);
@@ -102,7 +103,7 @@ const SearchPage = ():JSX.Element => {
       ) : (
         <CustomButton
           handlerOnClick={handlerOnClick}
-          className="show-more__button"
+          className={page === totalPage ? 'button__show-more__disabled' : 'button__show-more'}
           field="Show More"
         />
       )}

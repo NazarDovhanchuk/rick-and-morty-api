@@ -5,6 +5,7 @@ import {
   call, delay, put, takeEvery,
 } from 'redux-saga/effects';
 import { getCharactersAPI } from '../../../api/api';
+import { setLength } from '../CharactersList/charactersList.actions';
 import {
   CharactersSearch, getSearch, setSearch, toggleLoadMore,
 } from './charactersSearch.actions';
@@ -14,6 +15,7 @@ function* getSearchSaga({ payload }: ReturnType<typeof getSearch>): SagaIterator
 
   const data = yield call(getCharactersAPI, payload);
 
+  yield put(setLength(data.info.pages));
   yield put(setSearch(data.results));
   yield put(toggleLoadMore(false));
 }
