@@ -11,6 +11,11 @@
     cursor: pointer;
     border: 1px solid grey;
 
+    &--search {
+      margin: 10px auto;
+      display: block;
+    }
+
     &:hover {
       border: 1px solid #ff9800;
     }

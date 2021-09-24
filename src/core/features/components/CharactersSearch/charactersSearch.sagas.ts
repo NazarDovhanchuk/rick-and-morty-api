@@ -5,12 +5,17 @@ import {
   call, delay, put, takeEvery,
 } from 'redux-saga/effects';
 import { getCharactersAPI } from '../../../api/api';
-import { CharactersSearch, getSearch, setSearch } from './charactersSearch.actions';
+import {
+  CharactersSearch, getSearch, setSearch, toggleLoadMore,
+} from './charactersSearch.actions';
 
 function* getSearchSaga({ payload }: ReturnType<typeof getSearch>): SagaIterator {
-  const data = yield call(getCharactersAPI, payload);
   yield delay(1000);
-  yield put(setSearch({ charasters: data.results, loading: true }));
+
+  const data = yield call(getCharactersAPI, payload);
+
+  yield put(setSearch(data.results));
+  yield put(toggleLoadMore(false));
 }
 
 export function* seacrhWatcher():SagaIterator {

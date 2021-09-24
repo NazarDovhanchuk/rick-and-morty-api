@@ -1,14 +1,12 @@
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import CustomButton from '../../shared/CustomButton/CustomButton';
 import CustomForm from '../../shared/CustomForm/CustomForm';
 import CustomInput from '../../shared/CustomInput/CustomInput';
 import CustomSelect from '../../shared/CustomSelect/CustomSelect';
-import { getCharacters } from '../CharactersList/charactersList.actions';
-import { getCharactersList } from '../CharactersList/charactersList.selector';
 import { getSearch } from './charactersSearch.actions';
 
 const statuses = [
@@ -24,7 +22,6 @@ const CharactersSearch = (): JSX.Element => {
   const [gender, setGender] = useState('Female');
   const [search, setSearch] = useState('');
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const handlerOnSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
@@ -71,7 +68,7 @@ const CharactersSearch = (): JSX.Element => {
             className="custom__select"
           />
 
-          <CustomButton handlerOnClick={handlerOnSubmit} className="pagination__button" field="Search" />
+          <CustomButton handlerOnClick={handlerOnSubmit} className="pagination__button pagination__button--search" field="Search" />
 
         </CustomForm>
       </div>

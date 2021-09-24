@@ -18,9 +18,9 @@ const CharactersList = (): JSX.Element => {
 
   if (loading) {
     return (
-      <div>
+      <div className="loader loader__characters-list">
         <Loader
-          type="Puff"
+          type="TailSpin"
           color="#00BFFF"
           height={100}
           width={100}

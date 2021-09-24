@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { CharactersListState } from '../CharactersList/charactersList.state';
+import { CharactersItem } from '../CharactersList/charactersList.state';
 
 export enum CharactersSearch {
   LOAD_SEARCH = 'CHARACTERS_LOAD_SEARCH',
   SET_SEARCH = 'CHARACTERS_SET_SEARCH',
+  LOAD_MORE = 'CHARACTERS_LOAD_MORE',
 }
 
 interface SearchParameters {
@@ -13,14 +14,20 @@ interface SearchParameters {
   gender?: string;
 }
 
-export interface GetCharacters {
+interface Action {
   type: CharactersSearch;
+}
+
+export interface GetCharacters extends Action {
   payload: SearchParameters;
 }
 
-export interface SetCharacters {
-  type: CharactersSearch
-  payload: CharactersListState;
+export interface SetCharacters extends Action {
+  payload: CharactersItem[];
+}
+
+export interface SetLoadMore extends Action {
+  payload: boolean;
 }
 
 export const getSearch = (payload: SearchParameters): GetCharacters => ({
@@ -28,9 +35,14 @@ export const getSearch = (payload: SearchParameters): GetCharacters => ({
   payload,
 });
 
-export const setSearch = ({ charasters, loading }: CharactersListState): SetCharacters => ({
+export const setSearch = (payload: CharactersItem[]): SetCharacters => ({
   type: CharactersSearch.SET_SEARCH,
-  payload: { charasters, loading },
+  payload,
 });
 
-export type CharactersSearchActions = SetCharacters;
+export const toggleLoadMore = (payload: boolean): SetLoadMore => ({
+  type: CharactersSearch.LOAD_MORE,
+  payload,
+});
+
+export type CharactersSearchActions = SetCharacters | GetCharacters | SetLoadMore;
