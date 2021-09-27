@@ -1,12 +1,12 @@
 /* eslint-disable max-len */
-import { CharactersItem } from '../CharactersList/charactersList.state';
-import { CharactersPageActions, CharactersPageTypes } from './charactersPage.actions';
+import { CharactersItem } from '../../CharactersList/charactersList.state';
+import { CharactersPageActions, DetailsPageTypes } from './detailsPage.actions';
 
 const initialID = 0;
 
 export const charactersID = (state = initialID, action: CharactersPageActions): number => {
   switch (action.type) {
-    case CharactersPageTypes.DETAILS:
+    case DetailsPageTypes.DETAILS:
       return action.payload;
 
     default:
@@ -29,7 +29,7 @@ const initial: CharactersItem = {
 
 export const charactersDetails = (state = initial, action:CharactersPageActions): CharactersItem => {
   switch (action.type) {
-    case CharactersPageTypes.LOAD_DETAILS:
+    case DetailsPageTypes.LOAD_DETAILS:
       return {
         ...state,
         ...action.payload,

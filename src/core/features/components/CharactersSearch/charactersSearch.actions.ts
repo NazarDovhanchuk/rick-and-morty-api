@@ -8,7 +8,7 @@ export enum CharactersSearch {
 }
 
 interface SearchParameters {
-  page?: number,
+  page: number,
   name?: string;
   status?: string;
   gender?: string;

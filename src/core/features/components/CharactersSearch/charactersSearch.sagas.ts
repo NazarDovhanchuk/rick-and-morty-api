@@ -17,6 +17,7 @@ function* getSearchSaga({ payload }: ReturnType<typeof getSearch>): SagaIterator
 
   yield put(setLength(data.info.pages));
   yield put(setSearch(data.results));
+
   yield put(toggleLoadMore(false));
 }
 

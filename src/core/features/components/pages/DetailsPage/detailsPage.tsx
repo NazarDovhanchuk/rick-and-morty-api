@@ -2,8 +2,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { AppState } from '../../../store/state';
-import { setID } from './charactersPage.actions';
+import { AppState } from '../../../../store/state';
+import { setID } from './detailsPage.actions';
 
 interface CharactersPageProps {
   id: number,
@@ -15,7 +15,7 @@ interface CharactersPageProps {
 
 }
 
-const CharactersPage: React.FC<CharactersPageProps> = () => {
+const DetailsPage: React.FC<CharactersPageProps> = () => {
   const { id }:any = useParams();
   const details = useSelector((state: AppState) => state.charactersDetails);
   const dispatch = useDispatch();
@@ -38,4 +38,4 @@ const CharactersPage: React.FC<CharactersPageProps> = () => {
   );
 };
 
-export default CharactersPage;
+export default DetailsPage;

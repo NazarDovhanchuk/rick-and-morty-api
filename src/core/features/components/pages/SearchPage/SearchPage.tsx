@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CustomButton from '../../../shared/CustomButton/CustomButton';
 import { getCharactersLength } from '../../CharactersList/charactersList.selector';
-import { getSearch, toggleLoadMore } from '../charactersSearch.actions';
-import { getCharactersSearch, getLoadMore, getStatusLoad } from '../charactersSearch.selector';
+import { getSearch, toggleLoadMore } from '../../CharactersSearch/charactersSearch.actions';
+import { getCharactersSearch, getLoadMore, getStatusLoad } from '../../CharactersSearch/charactersSearch.selector';
 
 import './style.scss';
 

@@ -1,6 +1,6 @@
 import { fork, all } from 'redux-saga/effects';
 import { charactersWatcher } from '../features/components/CharactersList/charactersList.sagas';
-import { detailsWatcher } from '../features/components/CharactersPage/charactersPage.sagas';
+import { detailsWatcher } from '../features/components/pages/DetailsPage/detailsPage.sagas';
 import { seacrhWatcher } from '../features/components/CharactersSearch/charactersSearch.sagas';
 
 function* rootSaga(): Generator {
