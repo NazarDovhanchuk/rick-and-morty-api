@@ -11,7 +11,7 @@ import {
 } from './charactersSearch.actions';
 
 function* getSearchSaga({ payload }: ReturnType<typeof getSearch>): SagaIterator {
-  yield delay(1000);
+  yield delay(500);
 
   const data = yield call(getCharactersAPI, payload);
 

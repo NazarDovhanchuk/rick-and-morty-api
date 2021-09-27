@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CustomButton from '../../../shared/CustomButton/CustomButton';
 import { getCharactersLength } from '../../CharactersList/charactersList.selector';
-import { CharactersItem } from '../../CharactersList/charactersList.state';
 import { getSearch, toggleLoadMore } from '../charactersSearch.actions';
 import { getCharactersSearch, getLoadMore, getStatusLoad } from '../charactersSearch.selector';
 
@@ -21,7 +20,6 @@ const SearchPage = ():JSX.Element => {
   const totalPage: number = useSelector(getCharactersLength);
   const dispatch = useDispatch();
 
-  const [loadedCharacters, setLoadedCharacters] = useState<CharactersItem[]>([]);
   const [page, setPage] = useState<number>(1);
 
   // get URL params
@@ -29,7 +27,6 @@ const SearchPage = ():JSX.Element => {
   const name = queryParams.get('name');
   const gender = queryParams.get('gender');
   const status = queryParams.get('status');
-  console.log(totalPage);
 
   const handlerOnClick = (): void => {
     if (page === totalPage) return;
@@ -44,10 +41,6 @@ const SearchPage = ():JSX.Element => {
     }));
   }, [page, name, gender, status]);
 
-  useEffect(() => {
-    setLoadedCharacters([...loadedCharacters, ...characters]);
-  }, [characters]);
-
   return (
     <>
       {!isLoading ? (
@@ -61,7 +54,7 @@ const SearchPage = ():JSX.Element => {
         </div>
       ) : (
         <div className="charachers">
-          {loadedCharacters.map((person, index) => (
+          {characters.map((person, index) => (
             <div className="characters__item" key={index}>
               <img src={person.image} alt="Characters" className="characters__image" />
               <div className="characters__information">

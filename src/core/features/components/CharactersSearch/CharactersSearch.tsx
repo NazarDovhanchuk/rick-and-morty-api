@@ -1,13 +1,18 @@
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import CustomButton from '../../shared/CustomButton/CustomButton';
 import CustomForm from '../../shared/CustomForm/CustomForm';
 import CustomInput from '../../shared/CustomInput/CustomInput';
 import CustomSelect from '../../shared/CustomSelect/CustomSelect';
-import { getSearch } from './charactersSearch.actions';
+import { getCharactersLength } from '../CharactersList/charactersList.selector';
+import { CharactersItem } from '../CharactersList/charactersList.state';
+import { getSearch, toggleLoadMore } from './charactersSearch.actions';
+import { getCharactersSearch } from './charactersSearch.selector';
+// import SearchPage from './SearchPage/SearchPage';
 
 const statuses = [
   { id: 1, value: 'Alive' }, { id: 2, value: 'Dead' }, { id: 3, value: 'unknown' },
@@ -18,18 +23,14 @@ const genders = [
 ];
 
 const CharactersSearch = (): JSX.Element => {
+  const characters = useSelector(getCharactersSearch);
   const [characterStatus, setCharacterStatus] = useState('Alive');
   const [gender, setGender] = useState('Female');
   const [search, setSearch] = useState('');
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  const handlerOnSubmit = (e: React.FormEvent): void => {
-    e.preventDefault();
-
-    history.push(`/search?name=${search}&gender=${gender}&status=${characterStatus}`);
-
-    setSearch('');
-  };
+  const [loadedCharacters, setLoadedCharacters] = useState<CharactersItem[]>([]);
 
   const handlerOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value);
@@ -42,6 +43,23 @@ const CharactersSearch = (): JSX.Element => {
   const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>):void => {
     setGender(e.target.value);
   };
+
+  const handlerOnSubmit = (e: React.FormEvent): void => {
+    e.preventDefault();
+
+    history.push(`/search?name=${search}&gender=${gender}&status=${characterStatus}`);
+    setSearch('');
+  };
+
+  useEffect(() => {
+    dispatch(getSearch({
+      name: search || '', gender: gender || '', status: characterStatus || '',
+    }));
+  }, [search, gender, characterStatus]);
+
+  useEffect(() => {
+    setLoadedCharacters([...loadedCharacters, ...characters]);
+  }, [characters]);
 
   return (
     <>
@@ -71,6 +89,7 @@ const CharactersSearch = (): JSX.Element => {
           <CustomButton handlerOnClick={handlerOnSubmit} className="pagination__button pagination__button--search" field="Search" />
 
         </CustomForm>
+
       </div>
     </>
   );
