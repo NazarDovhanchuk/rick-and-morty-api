@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
 import { useSelector, useDispatch } from 'react-redux';
@@ -54,8 +50,8 @@ const SearchPage = ():JSX.Element => {
         </div>
       ) : (
         <div className="charachers">
-          {characters.map((person, index) => (
-            <div className="characters__item" key={index}>
+          {characters.map((person) => (
+            <div className="characters__item" key={person.id}>
               <img src={person.image} alt="Characters" className="characters__image" />
               <div className="characters__information">
                 <Link

@@ -11,7 +11,6 @@ import './style.scss';
 
 const CharactersList = (): JSX.Element => {
   const characters = useSelector(getCharactersList);
-  const isLoading = useSelector(getStatusLoad);
   const [loading, setLoading] = useState(true);
 
   setTimeout(() => {
