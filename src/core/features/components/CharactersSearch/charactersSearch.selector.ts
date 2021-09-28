@@ -9,4 +9,3 @@ export const getLoadFailure = (state: AppState) => state.charactersSearch.search
 
 /// selector search page
 export const setCharactersMore = (state: AppState) => state.charactersSearch.charasters;
-export const getCharactersPage = (state: AppState) => state.searchPageCharacters;

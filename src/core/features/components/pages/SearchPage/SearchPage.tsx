@@ -9,8 +9,7 @@ import {
   getSearch, getSearchPage, toggleLoadMore,
 } from '../../CharactersSearch/charactersSearch.actions';
 import {
-  getCharactersPage,
-  getCharactersSearch, getLoadFailure, getLoadMore, getStatusLoad, setCharactersMore,
+  getLoadFailure, getLoadMore, getStatusLoad, setCharactersMore,
 } from '../../CharactersSearch/charactersSearch.selector';
 
 import './style.scss';

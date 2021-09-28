@@ -8,7 +8,6 @@ import CustomForm from '../../shared/CustomForm/CustomForm';
 import CustomInput from '../../shared/CustomInput/CustomInput';
 import CustomSelect from '../../shared/CustomSelect/CustomSelect';
 import { getErrorSearch, getSearch } from './charactersSearch.actions';
-import { getCharactersPage } from './charactersSearch.selector';
 
 const statuses = [
   { id: 1, value: 'Alive' }, { id: 2, value: 'Dead' }, { id: 3, value: 'unknown' },

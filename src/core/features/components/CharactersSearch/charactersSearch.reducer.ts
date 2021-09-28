@@ -55,12 +55,3 @@ export const searchCharacters = (state = initial, action: CharactersSearchAction
   }
 };
 
-export const searchPageCharacters = (state = 1, action: CharactersSearchActions) => {
-  switch (action.type) {
-    case CharactersSearch.SET_PAGE_SEARCH:
-      return action.payload;
-
-    default:
-      return state;
-  }
-};

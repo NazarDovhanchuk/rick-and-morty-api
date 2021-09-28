@@ -7,6 +7,5 @@ export interface AppState {
   charactersSearch: CharactersListState;
   charactersDetails: CharactersItem;
   charactersPage: CharactersPageState,
-  searchPageCharacters: number,
   charactersLength: any;
 }
