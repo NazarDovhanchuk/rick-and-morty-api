@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { CharactersListState } from '../CharactersList/charactersList.state';
 import {
-  CharactersSearchActions, CharactersSearch, SetCharacters, SetLoadMore, SetLoadFailure,
+  CharactersSearchActions, CharactersSearch, SetCharacters, SetLoadMore, SetLoadFailure, SetMoreCharacters,
 } from './charactersSearch.actions';
 
 const initial: CharactersListState = {
@@ -11,6 +12,7 @@ const initial: CharactersListState = {
   loading: false,
   loadingMore: false,
   searchFailure: false,
+  page: 1,
 };
 
 export const searchCharacters = (state = initial, action: CharactersSearchActions): CharactersListState => {
@@ -23,6 +25,14 @@ export const searchCharacters = (state = initial, action: CharactersSearchAction
         charasters: [...payload],
         loading: true,
       }; }
+
+    case CharactersSearch.SET_LOAD_CHARACTERS: {
+      const { payload } = action as SetCharacters;
+      return {
+        ...state,
+        charasters: [...state.charasters, ...payload],
+      };
+    }
 
     case CharactersSearch.LOAD_MORE: {
       const { payload } = action as SetLoadMore;
@@ -45,11 +55,12 @@ export const searchCharacters = (state = initial, action: CharactersSearchAction
   }
 };
 
-// case CharactersSearch.LOAD_CHARACTERS_MORE: {
-//   const { payload } = action as SetLoadMore;
+export const searchPageCharacters = (state = 1, action: CharactersSearchActions) => {
+  switch (action.type) {
+    case CharactersSearch.SET_PAGE_SEARCH:
+      return action.payload;
 
-//   return {
-//     ...state,
-//     charasters: [...state, payload],
-//   };
-// }
+    default:
+      return state;
+  }
+};

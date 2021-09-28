@@ -6,3 +6,7 @@ export const getCharactersSearch = (state: AppState) => state.charactersSearch.c
 export const getStatusLoad = (state: AppState) => state.charactersSearch.loading;
 export const getLoadMore = (state: AppState) => state.charactersSearch.loadingMore;
 export const getLoadFailure = (state: AppState) => state.charactersSearch.searchFailure;
+
+/// selector search page
+export const setCharactersMore = (state: AppState) => state.charactersSearch.charasters;
+export const getCharactersPage = (state: AppState) => state.searchPageCharacters;

@@ -7,7 +7,7 @@ import {
 import { getCharactersAPI } from '../../../api/api';
 import { setLength } from '../CharactersList/charactersList.actions';
 import {
-  CharactersSearch, getErrorSearch, getLoadMore, getSearch, setSearch, toggleLoadMore,
+  CharactersSearch, getErrorSearch, getSearch, setCharactersMore, setSearch, toggleLoadMore,
 } from './charactersSearch.actions';
 
 function* getSearchSaga({ payload }: ReturnType<typeof getSearch>): SagaIterator {
@@ -31,10 +31,10 @@ function* getMoreCharacterSaga({ payload }: ReturnType<typeof getSearch>): SagaI
 
   const data = yield call(getCharactersAPI, payload);
 
-  yield put(getLoadMore(data.results));
+  yield put(setCharactersMore(data.results));
 }
 
 export function* seacrhWatcher():SagaIterator {
   yield takeEvery(CharactersSearch.LOAD_SEARCH, getSearchSaga);
-  yield takeEvery(CharactersSearch.LOAD_CHARACTERS_MORE, getMoreCharacterSaga);
+  yield takeEvery(CharactersSearch.LOAD_PAGE, getMoreCharacterSaga);
 }

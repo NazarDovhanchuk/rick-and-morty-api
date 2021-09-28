@@ -5,24 +5,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CustomButton from '../../../shared/CustomButton/CustomButton';
 import { getCharactersLength } from '../../CharactersList/charactersList.selector';
-import { getErrorSearch, getSearch, toggleLoadMore } from '../../CharactersSearch/charactersSearch.actions';
 import {
-  getCharactersSearch, getLoadFailure, getLoadMore, getStatusLoad,
+  getSearch, getSearchPage, toggleLoadMore,
+} from '../../CharactersSearch/charactersSearch.actions';
+import {
+  getCharactersPage,
+  getCharactersSearch, getLoadFailure, getLoadMore, getStatusLoad, setCharactersMore,
 } from '../../CharactersSearch/charactersSearch.selector';
-import { CharactersItem } from '../DetailsPage/detailsPage.state';
-// import { CharactersItem } from '../DetailsPage/detailsPage.state';
 
 import './style.scss';
 
 const SearchPage = ():JSX.Element => {
-  const characters = useSelector(getCharactersSearch);
+  const moreCharacters = useSelector(setCharactersMore);
   const isLoading = useSelector(getStatusLoad);
   const isLoadingMore = useSelector(getLoadMore);
   const totalPage: number = useSelector(getCharactersLength);
   const loadFailure = useSelector(getLoadFailure);
   const dispatch = useDispatch();
-
-  // const [loadedCharacters, setLoadedCharacters] = useState<CharactersItem[]>([]);
 
   const [page, setPage] = useState<number>(1);
 
@@ -37,6 +36,10 @@ const SearchPage = ():JSX.Element => {
     dispatch(toggleLoadMore(true));
 
     setPage(page + 1);
+
+    dispatch(getSearchPage({
+      page, name: name || '', gender: gender || '', status: status || '',
+    }));
   };
 
   useEffect(() => {
@@ -44,10 +47,6 @@ const SearchPage = ():JSX.Element => {
       page, name: name || '', gender: gender || '', status: status || '',
     }));
   }, [page, name, gender, status]);
-
-  // useEffect(() => {
-  //   setLoadedCharacters([...loadedCharacters, ...characters]);
-  // }, [characters]);
 
   if (loadFailure) return <div><h1>Hero not Found</h1></div>;
 
@@ -64,7 +63,7 @@ const SearchPage = ():JSX.Element => {
         </div>
       ) : (
         <div className="charachers">
-          {characters.map((person) => (
+          {moreCharacters.map((person) => (
             <div className="characters__item" key={person.id}>
               <img src={person.image} alt="Characters" className="characters__image" />
               <div className="characters__information">

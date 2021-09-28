@@ -7,6 +7,7 @@ import { CharactersListState } from './charactersList.state';
 
 const initial: CharactersListState = {
   charasters: [],
+  page: 1,
   loading: false,
   loadingMore: true,
   searchFailure: false,
@@ -17,6 +18,7 @@ export const allCharacters = (state = initial, action: CharactersActions): Chara
     case CharactersAllTypes.LOAD_SUCCESS:
       return {
         charasters: [...action.payload],
+        page: 1,
         loading: true,
         loadingMore: false,
         searchFailure: true,

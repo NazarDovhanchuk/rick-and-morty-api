@@ -7,7 +7,9 @@ export enum CharactersSearch {
   SET_SEARCH = 'CHARACTERS_SET_SEARCH',
   LOAD_MORE = 'CHARACTERS_LOAD_MORE',
   LOAD_FAILURE = 'CHARACTERS_LOAD_FAILURE',
-  LOAD_CHARACTERS_MORE = 'LOAD_CHARACTERS_MORE',
+  SET_PAGE_SEARCH = 'SET_PAGE_SEARCH',
+  SET_LOAD_CHARACTERS = 'SET_LOAD_CHARACTERS',
+  LOAD_PAGE = 'CHARACTERS_LOAD_PAGE',
 }
 
 interface SearchParameters {
@@ -30,7 +32,7 @@ export interface SetCharacters extends Action {
 }
 
 export interface SetLoadMore extends Action {
-  payload: any;
+  payload: boolean;
 }
 
 export interface SetLoadFailure extends Action {
@@ -57,9 +59,25 @@ export const getErrorSearch = (payload: boolean): SetLoadFailure => ({
   payload,
 });
 
-export const getLoadMore = (page: number): SetLoadMore => ({
-  type: CharactersSearch.LOAD_CHARACTERS_MORE,
-  payload: page,
+/// search action
+
+export interface SetMoreCharacters extends Action {
+  payload: number
+}
+
+export const setCharactersMore = (payload: CharactersItem[]): SetCharacters => ({
+  type: CharactersSearch.SET_LOAD_CHARACTERS,
+  payload,
 });
 
-export type CharactersSearchActions = SetCharacters | GetCharacters | SetLoadMore | SetLoadFailure;
+export const getSearchPage = (payload: SearchParameters): GetCharacters => ({
+  type: CharactersSearch.LOAD_PAGE,
+  payload,
+});
+
+export type CharactersSearchActions =
+  SetCharacters |
+  GetCharacters |
+  SetLoadMore |
+  SetLoadFailure |
+  SetMoreCharacters;

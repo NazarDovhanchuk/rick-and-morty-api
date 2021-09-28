@@ -4,8 +4,9 @@ import { CharactersPageState } from '../features/components/Pagination/paginatio
 
 export interface AppState {
   charactersReducer: CharactersListState;
+  charactersSearch: CharactersListState;
   charactersDetails: CharactersItem;
   charactersPage: CharactersPageState,
-  charactersSearch: CharactersListState;
+  searchPageCharacters: number,
   charactersLength: any;
 }

@@ -13,6 +13,7 @@ export type CharactersItem = {
 
 export interface CharactersListState {
   charasters: CharactersItem[];
+  page: number,
   loading: boolean,
   loadingMore: boolean,
   searchFailure: boolean
