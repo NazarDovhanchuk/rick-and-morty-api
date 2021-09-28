@@ -1,10 +1,7 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { CharactersListState } from '../CharactersList/charactersList.state';
 import {
-  CharactersSearchActions, CharactersSearch, SetCharacters, SetLoadMore, SetLoadFailure, SetMoreCharacters,
+  CharactersSearchActions, CharactersSearch, SetCharacters, SetLoadMore, SetLoadFailure,
 } from './charactersSearch.actions';
 
 const initial: CharactersListState = {
@@ -54,4 +51,3 @@ export const searchCharacters = (state = initial, action: CharactersSearchAction
       return state;
   }
 };
-

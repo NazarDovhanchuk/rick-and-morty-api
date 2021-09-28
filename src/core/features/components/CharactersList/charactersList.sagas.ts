@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { SagaIterator } from 'redux-saga';
 
 import {
-  call, delay, put, takeEvery,
+  call, put, takeEvery,
 } from 'redux-saga/effects';
 
 import {

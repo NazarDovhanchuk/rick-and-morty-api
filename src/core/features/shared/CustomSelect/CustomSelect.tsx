@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 
 import './style.scss';
@@ -18,7 +17,15 @@ const CustomSelect: React.FunctionComponent<CustomSelectProps> = ({
   items, value, name, handleChange, className,
 }) => (
   <select className={`select ${className}`} name={name} onChange={handleChange} value={value}>
-    {items.map((item) => <option key={item.id} selected={item.value === value} value={item.value}>{item.value}</option>)}
+    {items.map((item) => (
+      <option
+        key={item.id}
+        selected={item.value === value}
+        value={item.value}
+      >
+        {item.value}
+      </option>
+    ))}
   </select>
 );
 

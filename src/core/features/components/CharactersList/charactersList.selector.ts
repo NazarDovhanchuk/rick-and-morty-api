@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-
+/* eslint-disable max-len */
 import { AppState } from '../../../store/state';
+import { CharactersItem } from './charactersList.state';
 
-export const getCharactersList = (state: AppState) => state.charactersReducer.charasters;
-export const getCharactersLength = (state: AppState) => state.charactersLength;
+export const getCharactersList = (state: AppState): CharactersItem[] => state.charactersReducer.charasters;
+export const getCharactersLength = (state: AppState): number => state.charactersLength;

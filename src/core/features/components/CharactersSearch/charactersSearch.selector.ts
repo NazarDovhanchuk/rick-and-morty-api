@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable max-len */
 import { AppState } from '../../../store/state';
+import { CharactersItem } from '../CharactersList/charactersList.state';
 
-export const getCharactersSearch = (state: AppState) => state.charactersSearch.charasters;
-export const getStatusLoad = (state: AppState) => state.charactersSearch.loading;
-export const getLoadMore = (state: AppState) => state.charactersSearch.loadingMore;
-export const getLoadFailure = (state: AppState) => state.charactersSearch.searchFailure;
+export const getCharactersSearch = (state: AppState): CharactersItem[] => state.charactersSearch.charasters;
+export const getStatusLoad = (state: AppState): boolean => state.charactersSearch.loading;
+export const getLoadMore = (state: AppState): boolean => state.charactersSearch.loadingMore;
+export const getLoadFailure = (state: AppState): boolean => state.charactersSearch.searchFailure;
 
 /// selector search page
-export const setCharactersMore = (state: AppState) => state.charactersSearch.charasters;
+export const setCharactersMore = (state: AppState): CharactersItem[] => state.charactersSearch.charasters;

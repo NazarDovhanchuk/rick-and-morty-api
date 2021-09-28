@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SagaIterator } from '@redux-saga/types';
 import {
   call, put, takeEvery,

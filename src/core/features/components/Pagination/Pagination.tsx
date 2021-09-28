@@ -1,14 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable max-len */
-/* eslint-disable array-callback-return */
-/* eslint-disable consistent-return */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { AppState } from '../../../store/state';
 import CustomButton from '../../shared/CustomButton/CustomButton';
-import { getCharacters, setCharacters } from '../CharactersList/charactersList.actions';
+import { getCharacters } from '../CharactersList/charactersList.actions';
 import { getCharactersLength } from '../CharactersList/charactersList.selector';
 
 import './style.scss';

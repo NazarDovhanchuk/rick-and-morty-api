@@ -1,8 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { CharactersItem } from './charactersList.state';
 
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 export enum CharactersAllTypes {
   LOAD_SUCCESS = 'CHARACTERS_LOAD_SUCCESS',
   LOAD_CHARACTER = 'LOAD_CHARACTER',

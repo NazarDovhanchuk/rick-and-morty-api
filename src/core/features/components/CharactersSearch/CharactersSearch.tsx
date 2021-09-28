@@ -1,7 +1,5 @@
-/* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import CustomButton from '../../shared/CustomButton/CustomButton';
 import CustomForm from '../../shared/CustomForm/CustomForm';

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import axios, { AxiosResponse } from 'axios';
 
 interface ApiInterface {
@@ -17,4 +16,4 @@ export const getCharactersAPI = async (parameters: ApiInterface): Promise<AxiosR
     .then(({ data }) => data);
 };
 
-export const getCharactersByID = async (id: ApiInterface): Promise<AxiosResponse> => axios.get(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => data);
+export const getCharactersByID = async (id: number): Promise<AxiosResponse> => axios.get(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => data);

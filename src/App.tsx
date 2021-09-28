@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import {
   BrowserRouter as Router, Route, Switch,
@@ -6,7 +5,7 @@ import {
 
 import CharactersList from './core/features/components/CharactersList/CharactersList';
 import Pagination from './core/features/components/Pagination/Pagination';
-import CharactersPage from './core/features/components/pages/DetailsPage/detailsPage';
+import CharactersPage from './core/features/components/pages/DetailsPage/DetailsPage';
 import CharactersSearch from './core/features/components/CharactersSearch/CharactersSearch';
 import SearchPage from './core/features/components/pages/SearchPage/SearchPage';
 import HomePage from './core/features/components/pages/HomePage/HomePage';

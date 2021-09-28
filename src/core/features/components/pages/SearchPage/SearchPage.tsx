@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
 import { useSelector, useDispatch } from 'react-redux';
@@ -105,7 +104,7 @@ const SearchPage = ():JSX.Element => {
         <CustomButton
           handlerOnClick={handlerOnClick}
           className={page === totalPage ? 'button__show-more__disabled' : 'button__show-more'}
-          field="Next Page"
+          field="Show More"
         />
       )}
 

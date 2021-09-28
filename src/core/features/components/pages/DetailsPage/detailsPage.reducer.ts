@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { CharactersItem } from '../../CharactersList/charactersList.state';
 import { CharactersPageActions, DetailsPageTypes } from './detailsPage.actions';
 
@@ -27,7 +26,7 @@ const initial: CharactersItem = {
   location: '',
 };
 
-export const charactersDetails = (state = initial, action:CharactersPageActions): CharactersItem => {
+export const charactersDetails = (state = initial, action:CharactersPageActions):CharactersItem => {
   switch (action.type) {
     case DetailsPageTypes.LOAD_DETAILS:
       return {
