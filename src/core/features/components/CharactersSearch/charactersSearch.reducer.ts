@@ -3,13 +3,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { CharactersListState } from '../CharactersList/charactersList.state';
 import {
-  CharactersSearchActions, CharactersSearch, SetCharacters, SetLoadMore,
+  CharactersSearchActions, CharactersSearch, SetCharacters, SetLoadMore, SetLoadFailure,
 } from './charactersSearch.actions';
 
 const initial: CharactersListState = {
   charasters: [],
   loading: false,
   loadingMore: false,
+  searchFailure: false,
 };
 
 export const searchCharacters = (state = initial, action: CharactersSearchActions): CharactersListState => {
@@ -31,7 +32,24 @@ export const searchCharacters = (state = initial, action: CharactersSearchAction
         loadingMore: payload,
       }; }
 
+    case CharactersSearch.LOAD_FAILURE: {
+      const { payload } = action as SetLoadFailure;
+      return {
+        ...state,
+        searchFailure: payload,
+      };
+    }
+
     default:
       return state;
   }
 };
+
+// case CharactersSearch.LOAD_CHARACTERS_MORE: {
+//   const { payload } = action as SetLoadMore;
+
+//   return {
+//     ...state,
+//     charasters: [...state, payload],
+//   };
+// }

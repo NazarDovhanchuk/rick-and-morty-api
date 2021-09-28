@@ -1,11 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import Loader from 'react-loader-spinner';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CustomButton from '../../../shared/CustomButton/CustomButton';
 import { getCharactersLength } from '../../CharactersList/charactersList.selector';
-import { getSearch, toggleLoadMore } from '../../CharactersSearch/charactersSearch.actions';
-import { getCharactersSearch, getLoadMore, getStatusLoad } from '../../CharactersSearch/charactersSearch.selector';
+import { getErrorSearch, getSearch, toggleLoadMore } from '../../CharactersSearch/charactersSearch.actions';
+import {
+  getCharactersSearch, getLoadFailure, getLoadMore, getStatusLoad,
+} from '../../CharactersSearch/charactersSearch.selector';
+import { CharactersItem } from '../DetailsPage/detailsPage.state';
+// import { CharactersItem } from '../DetailsPage/detailsPage.state';
 
 import './style.scss';
 
@@ -14,7 +19,10 @@ const SearchPage = ():JSX.Element => {
   const isLoading = useSelector(getStatusLoad);
   const isLoadingMore = useSelector(getLoadMore);
   const totalPage: number = useSelector(getCharactersLength);
+  const loadFailure = useSelector(getLoadFailure);
   const dispatch = useDispatch();
+
+  // const [loadedCharacters, setLoadedCharacters] = useState<CharactersItem[]>([]);
 
   const [page, setPage] = useState<number>(1);
 
@@ -36,6 +44,12 @@ const SearchPage = ():JSX.Element => {
       page, name: name || '', gender: gender || '', status: status || '',
     }));
   }, [page, name, gender, status]);
+
+  // useEffect(() => {
+  //   setLoadedCharacters([...loadedCharacters, ...characters]);
+  // }, [characters]);
+
+  if (loadFailure) return <div><h1>Hero not Found</h1></div>;
 
   return (
     <>
@@ -93,7 +107,7 @@ const SearchPage = ():JSX.Element => {
         <CustomButton
           handlerOnClick={handlerOnClick}
           className={page === totalPage ? 'button__show-more__disabled' : 'button__show-more'}
-          field="Show More"
+          field="Next Page"
         />
       )}
 

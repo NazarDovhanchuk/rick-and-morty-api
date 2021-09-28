@@ -69,9 +69,6 @@ const Pagination = (): JSX.Element => {
 
     dispatch(getCharacters({
       page: +id,
-      name: '',
-      status: '',
-      gender: '',
     }));
   }, [id, totalPage]);
 

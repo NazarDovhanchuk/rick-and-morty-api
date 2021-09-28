@@ -9,6 +9,7 @@ const initial: CharactersListState = {
   charasters: [],
   loading: false,
   loadingMore: true,
+  searchFailure: false,
 };
 
 export const allCharacters = (state = initial, action: CharactersActions): CharactersListState => {
@@ -18,6 +19,7 @@ export const allCharacters = (state = initial, action: CharactersActions): Chara
         charasters: [...action.payload],
         loading: true,
         loadingMore: false,
+        searchFailure: true,
       };
 
     default:

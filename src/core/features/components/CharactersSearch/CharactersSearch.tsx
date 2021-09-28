@@ -7,8 +7,7 @@ import CustomButton from '../../shared/CustomButton/CustomButton';
 import CustomForm from '../../shared/CustomForm/CustomForm';
 import CustomInput from '../../shared/CustomInput/CustomInput';
 import CustomSelect from '../../shared/CustomSelect/CustomSelect';
-import { getCharactersLength } from '../CharactersList/charactersList.selector';
-import { getSearch } from './charactersSearch.actions';
+import { getErrorSearch, getSearch } from './charactersSearch.actions';
 
 const statuses = [
   { id: 1, value: 'Alive' }, { id: 2, value: 'Dead' }, { id: 3, value: 'unknown' },
@@ -24,6 +23,8 @@ const CharactersSearch = (): JSX.Element => {
   const [search, setSearch] = useState('');
   const history = useHistory();
   const dispatch = useDispatch();
+
+  search.replace(/%20/g, ' ');
 
   const handlerOnChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value);
@@ -46,6 +47,8 @@ const CharactersSearch = (): JSX.Element => {
     dispatch(getSearch({
       page: 1, name: search || '', gender: gender || '', status: characterStatus || '',
     }));
+
+    dispatch(getErrorSearch(false));
   };
 
   return (

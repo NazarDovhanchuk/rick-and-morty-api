@@ -9,7 +9,7 @@ import Pagination from './core/features/components/Pagination/Pagination';
 import CharactersPage from './core/features/components/pages/DetailsPage/detailsPage';
 import CharactersSearch from './core/features/components/CharactersSearch/CharactersSearch';
 import SearchPage from './core/features/components/pages/SearchPage/SearchPage';
-import HomePage from './core/features/components/pages/HomePage/homePage';
+import HomePage from './core/features/components/pages/HomePage/HomePage';
 
 const App = (): JSX.Element => (
   <>

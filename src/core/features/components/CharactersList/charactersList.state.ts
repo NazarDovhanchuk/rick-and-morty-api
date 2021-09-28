@@ -15,4 +15,5 @@ export interface CharactersListState {
   charasters: CharactersItem[];
   loading: boolean,
   loadingMore: boolean,
+  searchFailure: boolean
 }
