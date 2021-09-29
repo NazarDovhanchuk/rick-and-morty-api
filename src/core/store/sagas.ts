@@ -1,11 +1,10 @@
 import { fork, all } from 'redux-saga/effects';
-import { loadDefault } from '../features/components/CharactersList/charactersList.sagas';
-import { watchCharactersLoad } from '../features/components/Pagination/pagination.sagas';
-
-import { watchCharactersSearch } from '../features/shared/CustomInput/custom.input.sagas';
+import { charactersWatcher } from '../features/components/CharactersList/charactersList.sagas';
+import { detailsWatcher } from '../features/components/pages/DetailsPage/detailsPage.sagas';
+import { seacrhWatcher } from '../features/components/CharactersSearch/charactersSearch.sagas';
 
 function* rootSaga(): Generator {
-  yield all([fork(loadDefault), fork(watchCharactersLoad), fork(watchCharactersSearch)]);
+  yield all([fork(charactersWatcher), fork(detailsWatcher), fork(seacrhWatcher)]);
 }
 
 export default rootSaga;

@@ -1,29 +1,34 @@
 import React from 'react';
+import {
+  BrowserRouter as Router, Route, Switch,
+} from 'react-router-dom';
 
 import CharactersList from './core/features/components/CharactersList/CharactersList';
 import Pagination from './core/features/components/Pagination/Pagination';
-import { setSeacrh } from './core/features/shared/CustomInput/custom.input.actions';
-import CustomInput from './core/features/shared/CustomInput/CustomInput';
+import CharactersPage from './core/features/components/pages/DetailsPage/DetailsPage';
+import CharactersSearch from './core/features/components/CharactersSearch/CharactersSearch';
+import SearchPage from './core/features/components/pages/SearchPage/SearchPage';
+import HomePage from './core/features/components/pages/HomePage/HomePage';
 
 const App = (): JSX.Element => (
   <>
-    <CustomInput
-      placeholder="Find your hero"
-      action={setSeacrh}
-    />
-    <Pagination />
-    <CharactersList />
+    <Router>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/page/:id">
+          <CharactersSearch />
+          <Pagination />
+          <CharactersList />
+        </Route>
+        <Route path="/details/:id" component={CharactersPage} />
+        <Route path="/search/">
+          <CharactersSearch />
+          <SearchPage />
+        </Route>
+      </Switch>
+
+    </Router>
   </>
 );
 
-// const [heroSearch, setHeroSearch] = useState('');
-
-// const handlerSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
-//   setHeroSearch({ heroSearch: e.target.value });
-
-//   // eslint-disable-next-line no-console
-//   console.log(e.target.value);
-// };
-
-// eslint-disable-next-line implicit-arrow-linebreak
 export default App;

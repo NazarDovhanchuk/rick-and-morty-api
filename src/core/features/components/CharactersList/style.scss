@@ -1,7 +1,13 @@
-.charachers__list {
+.charachers {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: 50% 50%;
 
   margin: 30px;
+}
+
+
+.loader__characters-list {
+  width: 10%;
+  margin: 0 auto;
 }

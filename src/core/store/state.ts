@@ -1,9 +1,10 @@
-import { CharactersListState } from '../features/components/CharactersList/charactersList.state';
+import { CharactersItem, CharactersListState } from '../features/components/CharactersList/charactersList.state';
+import { CharactersPageState } from '../features/components/Pagination/pagination.state';
 
 export interface AppState {
   charactersReducer: CharactersListState;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  charactersPage: any,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  charactersSearch: any;
+  charactersSearch: CharactersListState;
+  charactersDetails: CharactersItem;
+  charactersPage: CharactersPageState,
+  charactersLength: number;
 }

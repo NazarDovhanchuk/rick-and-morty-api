@@ -1,0 +1,24 @@
+.button__show-more {
+  display: block;
+  width: 20%;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid grey;
+
+    &:hover {
+      border: 1px solid #ff9800;
+    }
+
+    &__disabled {
+      display: none;
+    }
+  }
+
+
+
+  .loader__search-page {
+    width: 10%;
+    margin: 0 auto;
+  }
